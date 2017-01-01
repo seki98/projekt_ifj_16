@@ -26,10 +26,10 @@ int main(int argc, char **argv)
 	}
 	
 	file = fopen(argv[1], "r");
-	
+	printf("%s\n",argv[1]);
 	if(!file)
 	{ 
-		//fprintf(stderr, "nejde otevrit soubor %s\n",argv[1]);
+		fprintf(stderr, "nejde otevrit soubor %s\n",argv[1]);
 		ret_error(INTERNAL_ERROR);
 	}
 

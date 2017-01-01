@@ -1,8 +1,7 @@
 /********************************************************************/
 /*Projekt:Implementace interpretu imperativního jazyka IFJ16        */
-/*Jména řešitelů: Sebastián Kisela, Ondrej Svoreň, Daniel Rudík,    */
-/*                  Patrik Roman, Martin Chudý                      */
-/*Loginy řešitelů: xkisel02, xsvore01, xrudik00, xroman10, xchudy04 */
+/*Jména řešitelů: Sebastián Kisela                                  */
+/*Loginy řešitelů: xkisel02                                         */
 /********************************************************************/
 #include "interpret.h"
 //#include "defs.h"
@@ -110,6 +109,7 @@ void translate_listitem(TListItem ins)
         }
 }
 
+//Check performed at the end of the interpreting, if all the used classes, functions and variables were defined
 int is_everything_defined(tTablePtr *RootPtr)
 {   
     // printf("name %s type %d\n",(*RootPtr)->name,(*RootPtr)->type);
@@ -175,7 +175,7 @@ int is_everything_defined(tTablePtr *RootPtr)
         return TRUE;
 }
 
-
+//get variable by its name
 TVariable *get_variable(TVariable *findVar)
 {
     // printf("FIND:%s %d\n",findVar->name, findVar->fullNameCall);
@@ -260,6 +260,7 @@ TVariable *get_variable(TVariable *findVar)
     return NULL;
 }
 
+//perform math operation
 void math()
 {
     var1 = ins->add1;
@@ -637,8 +638,8 @@ int interpret()
     TFunction * func;
 
     
-    // ins = func->list->First;
     
+    //main loop
     while(ins)
     {
         #ifdef DEBUG
@@ -1246,18 +1247,6 @@ int interpret()
         line;
         ret_error(SEMANTIC_DEF_ERROR);
     }
-        
-//     ins = globalInitList->First;
-//     TListItem nextIns;
-    
-//     while(ins)
-//  {
-//      nextIns = ins->next;
-//      free(ins);
-//      if(nextIns)
-//          ins = nextIns;
-//      else
-//          break;
-//  }
+
     return 1;
 }
